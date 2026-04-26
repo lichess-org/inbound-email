@@ -8,14 +8,30 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2026-04-26",
 	"observability": {
-		"enabled": true
+		"enabled": true,
+		"logs": {
+			"enabled": true
+		},
 	},
+	"workers_dev": false,
+	"preview_urls": false,
 	"env": {
 		"prod": {
 			"vars": {
-				"LICHESS_API_KEY": ""
+				"LICHESS_HOST": "https://lichess.org"
+			},
+			"secrets": {
+				"required": ["LICHESS_API_KEY"]
 			}
-		}
+		},
+		"dev": {
+			"vars": {
+				"LICHESS_HOST": "https://lichess.dev"
+			},
+			"secrets": {
+				"required": ["LICHESS_API_KEY"]
+			}
+		},
 	},
 	"upload_source_maps": true,
 	"compatibility_flags": [

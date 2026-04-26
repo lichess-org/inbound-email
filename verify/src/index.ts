@@ -2,21 +2,21 @@ export default {
 	async email(message, env, ctx) {
 		const lichessHost = env.LICHESS_HOST;
 		const url = new URL('/mod/email-confirm', lichessHost);
-		const formData = new URLSearchParams({
+		const body = (new URLSearchParams({
 			from: message.from,
 			to: message.to,
-		});
+		})).toString();
 		const resp = await fetch(url, {
 			method: 'POST',
 			headers: {
 				'Authorization': `Bearer ${env.LICHESS_API_KEY}`,
 				'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: formData.toString(),
+			body,
 		});
 		console.log({
 			lichessHost,
-			formData,
+			body,
 			response: {
 				status: resp.status,
 				body: await resp.text(),

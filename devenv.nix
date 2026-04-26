@@ -6,9 +6,17 @@
   ];
 
   languages = {
-    rust = {
+    javascript = {
       enable = true;
-      toolchainFile = ./rust-toolchain.toml;
+      npm = {
+        enable = true;
+      };
+      pnpm = {
+        enable = true;
+      };
+      corepack = {
+        enable = true;
+      };
     };
   };
 }

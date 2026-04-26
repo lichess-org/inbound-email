@@ -3,7 +3,7 @@ export default {
 		const lichessHost = env.LICHESS_HOST;
 		const url = new URL('/mod/email-confirm', lichessHost);
 		const body = (new URLSearchParams({
-			from: message.from,
+			sender: message.from,
 			to: message.to,
 		})).toString();
 		const resp = await fetch(url, {

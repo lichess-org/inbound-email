@@ -10,18 +10,12 @@
 	"observability": {
 		"enabled": true
 	},
-	"queues": {
-		"consumers": [
-			{
-				"queue": "my-queue"
+	"env": {
+		"prod": {
+			"vars": {
+				"LICHESS_API_KEY": ""
 			}
-		],
-		"producers": [
-			{
-				"binding": "MY_QUEUE",
-				"queue": "my-queue"
-			}
-		]
+		}
 	},
 	"upload_source_maps": true,
 	"compatibility_flags": [

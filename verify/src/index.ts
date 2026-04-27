@@ -1,7 +1,6 @@
 export default {
 	async email(message, env, ctx) {
-		const lichessHost = env.LICHESS_HOST;
-		const url = new URL('/mod/email-confirm', lichessHost);
+		const url = new URL('/mod/email-confirm', env.LICHESS_HOST);
 		const body = (new URLSearchParams({
 			sender: message.from,
 			to: message.to,
@@ -15,12 +14,16 @@ export default {
 			body,
 		});
 		console.log({
-			lichessHost,
+			url: url.toString(),
 			body,
 			response: {
 				status: resp.status,
 				body: await resp.text(),
 			}
 		});
+	},
+	async fetch(request, env, ctx) {
+		const url = new URL('/contact/email-confirm/help', env.LICHESS_HOST);
+		return Response.redirect(url.toString(), 301);
 	},
 } satisfies ExportedHandler<Env, Error>;

@@ -17,6 +17,12 @@
 	"preview_urls": false,
 	"env": {
 		"prod": {
+			"routes": [
+				{
+					"pattern": "verify.lichess.org",
+					"custom_domain": true,
+				},
+			],
 			"vars": {
 				"LICHESS_HOST": "https://lichess.org"
 			},
@@ -25,6 +31,12 @@
 			}
 		},
 		"dev": {
+			"routes": [
+				{
+					"pattern": "verify.lichess.dev",
+					"custom_domain": true,
+				},
+			],
 			"vars": {
 				"LICHESS_HOST": "https://lichess.dev"
 			},

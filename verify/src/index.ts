@@ -13,14 +13,17 @@ export default {
 			},
 			body,
 		});
-		console.log({
-			url: url.toString(),
-			body,
-			response: {
-				status: resp.status,
-				body: await resp.text(),
+		console.info(
+			resp.ok ? `✅ Email processed successfully for ${message.to}` : `❌ Failed to process email for ${message.to}; status: ${resp.status}`,
+			{
+				url: url.toString(),
+				body,
+				response: {
+					status: resp.status,
+					body: await resp.text(),
+				}
 			}
-		});
+		);
 	},
 	async fetch(request, env, ctx) {
 		const url = new URL('/contact/email-confirm/help', env.LICHESS_HOST);
